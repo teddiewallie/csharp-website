@@ -33,9 +33,9 @@ C# är baserat på C++ och har samtidigt stora likheter med Java.
 
 ## Kompilerande språk
 
-C# är ett kompilerade språk, vilket innebär att koden du skriver (källkoden) först översätts till maskinkod innan den kan köras (exekveras) på din dator. C#-koden skriver du i en texteditor som till exempel VS Code. För att översätta C#-koden till maskinkod som kan köras på din dator, används en ett program som kallas kompilator. Under kompileringen verifieras dessutom din C#-kod, vilket innebär att kompilatorn kontrollerar att du har rätt syntax, det vill säga att det du skrivit följer språkets regler. 
+C# är ett kompilerade språk, vilket innebär att koden du skriver (källkoden) först översätts till maskinkod innan den kan köras (exekveras) på din dator. C#-koden skriver du i en texteditor som till exempel VS Code. För att översätta C#-koden till maskinkod som kan köras på din dator, används en ett program som kallas kompilator. Under kompileringen verifieras dessutom din C#-kod, vilket innebär att kompilatorn kontrollerar att du har rätt syntax, det vill säga att det du skrivit följer språkets regler.
 
-Datorns processor, även kallad CPU (Central Processing Unit) och brukar benämnas datorn hjärna, kan bara köra maskinkod. Maskinkod består av binära instruktioner, 1:or och 0:or, som är specifika för den processor som finns i din dator. 
+Datorns processor, även kallad CPU (Central Processing Unit) och brukar benämnas datorn hjärna, kan bara köra maskinkod. Maskinkod består av binära instruktioner, 1:or och 0:or, som är specifika för den processor som finns i din dator.
 
 För att kunna köra den kod du skriver i C# behöver den alltså kompileras. Vid kompilering omvandlas koden du skrivit först till CIL-kod (Common Intermediate Language) som är ett mellanliggande objektorienterat högnivå-assemblerspråk. CIL hette för övrigt tidigare MSIL (Microsoft Intermediate Language). CIL-koden görs sedan om till körbar programkod med CLR (Common Language Runtime) som utför en så kallad Just-in-time-kompilering.
 
@@ -45,6 +45,22 @@ Detta görs automatiskt när du kör ditt program i terminalen med .NET-kommando
     src={csharpKompilering}
     caption="C# kompilering, från C# kod till maskinkod."
 />
+
+C# kompilatorn kallas JIT (Just-In-Time kompilator), och är en central del av hur .NET (och därmed C#) körs.
+
+Kompilering av ett C#-program sker följande i två steg:
+
+1. Kompilering till CIL (Common Intermediate Language):
+När du kör dotnet build kompileras C#-koden först till CIL, som är plattformsoberoende.
+Denna CIL sparas i en `.dll` eller `.exe-fil`.
+
+1. JIT-kompilering vid körning:
+När du sedan kör programmet:
+  - CLR (Common Language Runtime) laddar IL-koden.
+  - JIT-kompilatorn översätter IL → maskinkod för din dator precis innan metoderna körs.  
+Därför: “Just in time”.
+
+En fördel med JIT-kompilering är att koden optimeras för aktuell CPU (dator) och operativsystem men det tar lite längre tid att starta ett C#-program än ett Python-program.
 
 Det viktiga att ta med sig är att det är ett program kallat kompilator som verifierar din C# kod och översätter den till maskinkod som kan köras på din dator.
 
