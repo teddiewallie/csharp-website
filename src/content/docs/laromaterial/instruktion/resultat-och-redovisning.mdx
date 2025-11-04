@@ -1,17 +1,11 @@
 ---
-title: "Resultat och redovisning ⚠️" 
+title: "Resultat och redovisning" 
 description: No description.
 sidebar:
     order: 001
 ---
 
 import { YouTube } from 'astro-embed';
-
-:::danger
-Instruktionerna är under uppdatering och är ännu inte klara!
-
-Pusha till main och jobba på så länge!
-:::
 
 Som ett sista steg i varje kursmoment skall du redovisa. Gör så här.
 
@@ -23,7 +17,7 @@ Som ett sista steg i varje kursmoment skall du redovisa. Gör så här.
 
 PS! För kmom03, kmom06 och kmom10 skall du även göra en pull request (PR) på GitHub. Läs mer om det längst ner på sidan.
 
-## Kör tester
+## Kör testerna lokalt
 
 Dubbelkolla att din kod passerar testerna och validerar. Ladda ner testerna lokalt, se information i respektive kmom. Om du har några fel, fixa dem före du fortsätter.
 
@@ -32,7 +26,7 @@ Dubbelkolla att din kod passerar testerna och validerar. Ladda ner testerna loka
 Varje kmom har ett quiz på Canvas som ska göras och klaras av. Kmom01 har dessutom ett quiz om fusk som ska klaras av först.
  
 
-## Tagga och pusha ditt repo
+## Kör testerna på GitHub
 
 Lägg till en tagg till ditt repo och pusha sedan både taggen och ditt repo.
 
@@ -61,12 +55,11 @@ Om du gör ändringar så taggar du din nya inlämning med ett högre versionsnu
 
 Nu kan du pusha både tagg och repo till GitHub.
 
-```bash title="Pusha repo inklusive taggar."
-git push
+```bash title="Pusha din tagg till GitHub."
 git push --tags
 ```
 
-När du taggar så körs tester på respektive kmom. Kolla på GitHub att det går grönt under "Actions"!
+När du taggar så körs testerna på respektive kmom på GutHub. Kolla på GitHub att det går grönt under "Actions"!
 
 Som ett sista steg i din inlämning så kan du kontrollera att GitHub verkligen innehåller den allra senaste versionen av din kod.
 
