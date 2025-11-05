@@ -1,8 +1,129 @@
 ---
-title: "Kmom03: "
-description: Tredje uppgiften
+title: "Kmom03: Tärningsspelet Dice100 del 2"
+description: Tärningsspelet Dice100 del 2
 sidebar:
     order: 0030
 ---
 
-Kommer snart...
+
+Tärningsspelet **Dice100** är ett enkelt men roligt, tärningsspel. Det gäller att samla ihop poäng för att komma först till **100** genom att kasta tärningar. I varje omgång kastar en spelare i taget tärningar tills spelaren väljer att stanna och spara poängen eller tills det dyker upp en 1:a eftersom spelaren då förlorar alla poäng som samlats in i rundan. Antalet rundor räknas upp oavsett om spelaren väljer att spara rundan eller får en etta.
+
+I denna uppgiften får du möjlighet att använda en statisk klass **AsciiArt**  som "skriver ut" tärningarna som enkla terminalbilder i [ASCCII](https://sv.wikipedia.org/wiki/ASCII). Du uppdaterar klassen **Die** med en ny metod för detta. Syftet med denna del är att visa att klassen **Die** kan använda andra klasser.
+
+Vi gör ett eget undantag/exception och sparar dessutom en topplista på fil. Naturligtvis lägger vi till ett menyalternativ som motsvarar att läsa från fil och ett menyalternativ för att visa topplistan i terminalen.
+
+
+## Förkunskaper
+
+Du bör ha gjort, eller ha förkunskaper som motsvarar:
+
+- guiden "Kom igång med objektorienterad programmering i C#" kapitlet [Kapitel 1 - Objekt och Klasser](./../../../OoGuide/kap1/README.md)
+- artikeln om [Exceptions](./../Kunskap/Exception.md).
+- artikeln om [Filer](./../Kunskap/File.md).
+- artikeln [Sortera information](./../Kunskap/Sortering.md).
+
+## Introduktion
+
+Nu ska vi kopiera klassen **AsciiArt** vilken ska användas i klassen **Die**. 
+
+Projektet som du skapar ska heta **Die100** och det skapar du i kmom03. Kopiera in de klasser du redan har från kmom02 och lägg dem under kmom03/Dice100/src.
+
+### AsciiArt
+
+Klassen **AsciiArt** innehåller bilder på tärningarna som kan användas för att göra det lite roligare i terminalen. Den behöver du inte skriva själv utan den kopieras. Du hittar den [här](./../../../CodeExamples/kmom03/uppgift/AsciiArt.cs).
+
+### Die
+
+Lägg till en metod `PrintAscii` i klassen **Die**.
+
+- **PrintAscii()** en publik metod som skriver ut en ASCII-bild av tärningen.
+
+### Huvudprogrammet
+
+Huvudprogrammet, **Program.cs**, använder bara menyklassen och ska starta menyn.
+
+## Krav
+
+1. Lägg till en ny metod i klassen **Die** som heter `PrintAscii`. Metoden använder klassen **AsciiArt** och dess metod `PrintDie`.
+
+2. Uppdatera klassen **Round** att använda den nya metoden `PrintAscii` istället för.
+
+3. Gör det möjligt att mata in antalet tärningar som spelet ska använda.
+
+4. Skapa ett exception **NumberOfDieException** som ska kastas om det matas in ett värde mindre än 2 och större än 10. Vad ska hända om spelaren matar in för många eller för få tärningar? Ett sätt är att låta användaren mata in tills värdet blir ok. Ett tips: klassen **Game** vet hur många tärningar som är ok och bör vara den som kastar ett exception om antalet inte är ok. Glöm inte att fånga de undantag/exception som kan kastas!
+
+Testa genom att köra menyprogrammet och mata in för många respektive för få tärningar och kontrollera att undantag/exception kastas och fångas. 
+
+6. Gör en topplista som sparar de bästa resultaten med antal tärningar, namn, poäng och antal rundor. För att du inte ska behöva skriva om allt varje gång du startar programmet sparar du tärningar, namn, poäng och antalet rundor på fil. Detta gör du lämpligen som en sträng, som t.ex kan se ut så här "2, bella, 101, 16". Ordningen inom strängen bestämmer du själv men tänk på att testerna förväntar sig att det på varje rad finns en sträng med antalet tärningar, namn, poäng och antalet rundor.
+Gör en egen klass **FileHandler** enligt:  
+![Klassdiagram FileHandler](./../../../images/kmom03/classdiagramFileHandler.png "Klassdiagram FileHandler")
+
+7. Gör ett menyalternativ för att visa topplistan. Presentera en lista och sortera efter minst antal rundor. Topplistan kan se så här:
+
+```text
+Topplistan för Dice100
+Antal rundor  Namn                 Antal tärningar Total poäng
+     5        Pelle                       4            102       
+     8        Kalle                       4            103       
+     10       Nisse                       4            115       
+```
+
+## Demo på Dice100
+
+Så här kan det se ut när det är klart.
+
+[Video på Dice100](https://youtu.be/TJc7Z614cz0)
+
+## Extrauppgift
+
+1. Gör så att flera spelare kan spela mot varandra.
+
+2. Spara olika topplistor för 1 tärning, 2 tärningar och så vidare. Presentera dessutom sannolikheten att få en 1:a för varje topplista.
+
+3. Gör så att antalet rundor är begränsat. Vid start av spelet får användaren välja både antal tärningar och maximala antalet rundor. Om maximala antalet rundor är **7** så måste användaren komma upp till 100 poäng på 7 rundor, därefter blir det "game over".
+
+## Tester
+
+Testa din kod genom att köra igenom ditt menyprogram och kontrollera att det fungera som det ska. Du har kontrollerat att testprojektet från uppgiften ovan går igenom vilket innebär att  **FileHandler**, **Exception**, **Die**, **DieGraphicTest** och **Round** fungerar som de ska. Kopiera testprojektet [**Dice100.Tests**](./../../../CodeExamples/kmom03/uppgift/Dice100.Tests) från CodeExamples/kmom03 och lägg i me/kmom03 och då ser det ut så här:
+
+```shell
+pwd // stå i me/kmom03
+tree -L 2
+.
+├── Dice100
+│   ├── Dice100.csproj
+│   ├── Program.cs
+│   ├── src
+│   ├── bin
+│   └── obj
+├── Dice100.Tests
+│   ├── Dice100.Tests.csproj
+│   ├── DieGraphicTest.cs
+│   ├── DieTest.cs
+│   ├── Exception.cs
+│   ├── FileHandlerTest.cs
+│   ├── RoundTest.cs
+│   └── Usings.cs
+```
+
+Titta i filen "Dice100.Tests.csproj" och se om den pekar ut rätt klasser att testa. Den ska peka ut klasserna som ska testas genom att referera till projektfilen "Dice100.csproj". Kör testerna:
+
+```shell
+pwd // stå i me/kmom03/Dice100.Tests
+dotnet test
+dotnet test --logger "console;verbosity=normal" // mer information
+```
+
+Hoppas alla tester går igenom! Lycka till!
+
+## Inlämning
+
+Ta bort debugutskrifter och sätt antalet tärningar och målpoäng så att det stämmer med kraven.
+
+## Tips från coachen
+
+Felsöka med hjälp av utskrifter av `Console.WriteLine()`. Använd gärna debugger i VS Code.
+
+Glöm inte att använda 'dotnet format' för att formatera din kod.
+
+Lycka till och hojta till i forumet om du behöver hjälp!

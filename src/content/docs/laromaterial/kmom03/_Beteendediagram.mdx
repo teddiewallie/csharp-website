@@ -5,6 +5,13 @@ sidebar:
     order: 2
 ---
 
+import Figure from '@components/CustomFigure.astro';
+
+import useCaseShowBalance from '@assets/img/kmom03/useCaseShowBalance.png';
+import sequenceShowBalance from '@assets/img/kmom03/sequenceShowBalance.png';
+import useCaseCreateAccountSimple from '@assets/img/kmom03/useCaseCreateAccountSimple.png';
+import useCaseCreateAccount from '@assets/img/kmom03/useCaseCreateAccount.png';
+import sequenceCreateAccount from '@assets/img/kmom03/sequenceCreateAccount.png';
 
 Ett beteendediagram är en dynamisk bild av systemet som visar vad som händer i systemet. Det beteendediagram som vi ska fokusera på är **use case diagram** (användningsfallsdiagram) och beskriver funktionaliteten ur användarens perspektiv. Vi ska även titta på **sekvensdiagram** som visar hur systemets objekt samverkar i en specifik sekvens över tid.
 
@@ -24,6 +31,11 @@ För att rita use case diagram används här [PlantUML Use Case Diagram](https:/
 
 ![Use case diagram Titta på saldot](./../../../images/kmom03/useCaseShowBalance.png "Use case diagram Titta på saldot")
 
+<Figure
+    src={useCaseShowBalance}
+    caption="Bilden visar Use case diagram Titta på saldot."
+/>
+
 ### Användningsfall - Skapa konto
 
 **Användingsfall**: Kunden vill skapa ett saldo  
@@ -31,9 +43,23 @@ För att rita use case diagram används här [PlantUML Use Case Diagram](https:/
 **Aktör**: Banktjänstemannen  
 **Funktionalitet**: Banken efterfrågar personuppgifter och kunder ger dem till banken. Banken verifierar kundens identitet och skapar ett nytt konto med ett unikt nummer.  
 
-Enkelt exempel | Utökat exempel
----------------|----------------
-![Enkelt use case diagram Skapa konto](./../../../images/kmom03/useCaseCreateAccountSimple.png "Enkelt use case diagram Skapa konto") | ![Use case diagram Skapa konto](./../../../images/kmom03/useCaseCreateAccount.png "Use case diagram Skapa konto")
+#### Enkelt exempel
+
+<Figure
+    src={useCaseCreateAccountSimple}
+    caption="Enkelt exempel: use case diagram Skapa konto."
+    width="600px"
+/>
+
+#### Utökat exempel
+
+<Figure
+    src={useCaseCreateAccount}
+    caption="Utökat exempel: use case diagram Skapa konto."
+    width="600px"
+/>
+
+
 
 ## Sekvensdiagram
 
@@ -47,13 +73,21 @@ För att rita sekvensdiagram använder vi [PlantUML Sequence Diagram](https://pl
 
 Här är kunden en aktör och objekten som påverkas är av klasserna Bank och BankAccount. En loop markerar att Bank letar efter kontot i sin lista med konton tills dess kontot hittats. En "alt"-ruta visar vad som händer om kontot hittas, vilket resulterar i att saldot visas, och om kontot inte hittas, vilket resulterar i att ett felmeddelande visas.
 
-![Sekvensdiagram Titta på saldo](./../../../images/kmom03/sequenceShowBalance.png "Sekvensdiagram Titta på saldo")
+<Figure
+    src={sequenceShowBalance}
+    caption="Bilden visar sekvensdiagrammet Titta på saldo."
+    width="400px"
+/>
 
 ### Sekvens - Skapa konto
 
 Här har vi två aktörer, kunden och banktjänstemannen, samt tre objekt av klasserna Bank, PayrollAccount och InterestAccount. Först utbyter kunden och banktjänstemannen information och sen skapas ett bankkonto. Om kunden väljer ett PayrollAccount så skapas ett objekt av klassen PayrollAccount och om kunden väljer InterestAccount så skapas ett objekt av klassen InterestAccount. Det skapade kontot sparas i banken och kunden informeras om att kontot är skapat.
 
-![Sekvensdiagram Skapa konto](./../../../images/kmom03/sequenceCreateAccount.png "Sekvensdiagram Skapa konto")
+<Figure
+    src={sequenceCreateAccount}
+    caption="Bilden visar sekvensdiagrammet Skapa konto."
+/>
+
 
 ## Sammanfattning
 

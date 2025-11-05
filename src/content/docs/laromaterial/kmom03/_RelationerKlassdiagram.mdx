@@ -5,6 +5,11 @@ sidebar:
     order: 1
 ---
 
+import Figure from '@components/CustomFigure.astro';
+
+import relationer from '@assets/img/kmom03/relationer.png';
+import classdiagramBankWithRelations from '@assets/img/kmom03/classdiagramBankWithRelations.png';
+
 UML (Unified Modeling Language) är ett visuellt modelleringsspråk för att beskriva, visualisera, specificera och dokumentera olika delar av system och programvara. Syftet med UML är underlätta kommunikation, förståelse och design av komplexa system och programvara mellan utvecklare, kunder och andra intressenter.
 
 Nu ska vi fortsätta med klassdiagram och se hur vi kan göra för att även visa relationer mellan klasserna.
@@ -50,8 +55,11 @@ Elementen representerar olika delar som till exempel aktörer, klasser, use case
 
 Det finns flera typer av relationer som används i UML för att beskriva beroenden mellan elementen. Här pratar vi om komposition, aggregation och kort om association.
 
-![Relationer](./../../../images/kmom03/relationer.png "Relationer")  
-*Bilden visa olika typer av relationer, där association är mest generell och komposition den starkaste relationen.*
+<Figure
+    src={relationer}
+    caption="Bilden visar olika typer av relationer, där association är mest generell och komposition den starkaste relationen."
+    width="400px"
+/>
 
 ### Komposition
 
@@ -65,7 +73,7 @@ Komposition symboliseras av en ifylld diamant/romb som pekar på det ägande obj
 
 Aggregation är en svagare typ av "har-en" relation än komposition. Aggregation innebär att ett objekt klassen **A** använder objekt av klassen **B**. Även om objektet av klassen **A** upphör att existera så fortsätter objekten av klassen **B** att existera.
 
-Vi fortsätter med [bankexemplet](#bankexemplet) så har banken anställda. Vi har en klass **Employee**. Klassen **Bank** har anställda och därmed objekt av klassen **Employee**. Vi tar med kardinalitet genom att beskriva att en bank (en 1:a vid diamanten på linjen mot **Bank**) kan ha en eller flera anställda (1..n vid linjen mot **Employee**). Objekten av klassen **Employee** fortsätter att existera när **Bank** upphör. 
+Vi fortsätter med [bankexemplet](#bankexemplet) så har banken anställda. Vi har en klass **Employee**. Klassen **Bank** har anställda och därmed objekt av klassen **Employee**. Vi tar med kardinalitet genom att beskriva att en bank (en 1:a vid diamanten på linjen mot **Bank**) kan ha en eller flera anställda (1..n vid linjen mot **Employee**). Objekten av klassen **Employee** fortsätter att existera när **Bank** upphör.
 
 Aggregation symboliseras av en diamant/romb som inte är ifylld som pekar på det objektet som använder det, gärna med kardinalitet.
 
@@ -96,7 +104,7 @@ Koden för bankexemplet är uppdaterad för att bättre passa till denna artikel
 3. **Employee** – används via **aggregation**. *Banken har anställda.*
 4. **Customer** – används via **association**. *Banken betjänar kunder.*
 
-### Relationer 
+### Relationer - banken
 
 - **Komposition**: **Bank** skapar **BankAccount** som är en del av banken och slutar att existera när banken slutar att existera. **Bank** äger **BankAccount**.
 - **Aggregation**: **Bank** har **Employee** som tillförs utifrån och kan existera utan banken.
@@ -110,7 +118,12 @@ Här har vi bankexemplet med riktiga symboler och kardinalitet.
 - **Bank** har en eller flera **Employees**
 - **Bank** har noll eller flera **Customer**
 
-![Bank med relationer och kardinalitet](./../../../images/kmom03/classdiagramBankWithRelations.png "Bank med relationer och kardinalitet")
+![Bank med relationer och kardinalitet](./../../../images/kmom03/classdiagramBankWithRelations.png "")
+
+<Figure
+    src={classdiagramBankWithRelations.png}
+    caption="Bilden visar banken med relationer och kardinalitet."
+/>
 
 ## Avslutningsvis
 
