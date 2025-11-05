@@ -19,9 +19,11 @@ Komposition är en relationsform där en objekt "innehåller" objekt av en annan
 
 Aggregation är en associationsform där en klass har tillgång till (kan även här uttryckas innehåller) objekt av en annan klass men de objekten kan existera oberoende av varandra och det är en "svagare" relation än komposition.
 
+Vi ska utöka vårt tärningsspel **Dice100** så att vi använder fler klasser och dessutom beskriva vilka relationerna är mellan klasserna.
+
 ## Förberedelser
 
-Innan du börjar med kmom03 så behöver du ha jobbat igenom [Kmom02](../kmom02).
+Innan du börjar med kmom03 så behöver du ha jobbat igenom [Kmom03](../kmom03).
 <br/>
 
 
@@ -42,14 +44,14 @@ code .
 ### Att göra
 
 <Steps>
-1. Läs och jobba igenom följande kapitel i boken **C# 12.0 in a Nutshell: The Definitive Reference**:
-    * kapitel 3 Creating Types in C#, delkapitel Classes
-    * kapitel 4 Advance C#, delkapitel Try Statements and Exceptions
-    * kapitel 15, delkapitel  File and Directory Operations till och med Path
 
-    :::tip
-    Det räcker inte med att bara läsa. Du är klar med boken när du förstår vad som står i den och kan köra koden själv. Utforska och experimentera med koden. Gör övningarna i boken. Testa ändra saker och se vad som händer. Det är så du lär dig.
-    :::
+1. Gå igenom artikeln [Mer om klassdiagram](Kunskap/RelationerKlassdiagram.md) för att lära dig mer om relationerna i ett klassdiagram. Du lär dig skillnaden mellan komposition och aggregation.
+
+1. Om du vill ha extra kunskap om UML diagram, så går du igenom artikeln om [Beteendediagram](Kunskap/Beteendediagram.md).
+
+
+
+
 
 </Steps>
 
@@ -64,7 +66,7 @@ code .
 <summary>
 ## Onsdag
 </summary>
-Jobba igenom [seminarium kmom02](/website/laromaterial/seminarium/kmom02). Det görs på onsdagens lektion.
+Jobba igenom [seminarium kmom03](/website/laromaterial/seminarium/kmom03). Det görs på onsdagens lektion.
 </details>
 <br/>
 
@@ -80,7 +82,12 @@ Jobba igenom [seminarium kmom02](/website/laromaterial/seminarium/kmom02). Det g
 ### Att göra
 <Steps>
 
-1. För att bekanta dig med C# dokumentationen, kika i [C# language documentation](https://learn.microsoft.com/en-us/dotnet/csharp/) och titta runt. **Spendera inte mer än 60 minuter på detta.**
+1. Läs och jobba igenom följande kapitel i boken **C# 12.0 in a Nutshell: The Definitive Reference**:
+    * kapitel 4 Advance C#, delkapitel Try Statements and Exceptions
+    * kapitel 15, delkapitel  File and Directory Operations till och med Path
+
+1. Lös uppgifterna under [Uppgifter](#uppgifter).
+
 </Steps>
 
 
@@ -94,17 +101,20 @@ Jobba igenom [seminarium kmom02](/website/laromaterial/seminarium/kmom02). Det g
 -
 
 
+
+
 ## Uppgifter
 
 Följande uppgifter skall utföras och resultatet skall redovisas.
 
-1. På Canvas, gör quizzet `Kmom02 quiz`.
+1. På Canvas, gör quizzet `Kmom03 quiz`.
 
 :::danger
 Varje uppgift ska lösas med de C# konstruktioner som vi går igenom i respektive kmom.
-:::
 
-1. Gör uppgiften...
+:::
+1. Gör uppgiften "[Gör ett menyprogram](/website/laromaterial/uppgift/kmom03)" för att visa att du har koll på grunderna. Använd gärna flödesschema eller pseudokod för problemlösningen.  
+Spara alla filer under `kmom03`.
 
 
 
@@ -113,4 +123,15 @@ Varje uppgift ska lösas med de C# konstruktioner som vi går igenom i respektiv
 Läs [instruktionen om hur du skall redovisa](/website/laromaterial/instruktion/resultat-och-redovisning).  
 I denna kursen har vi ingen redovisningstext utan quiz att klara av istället.
 
+## Målet med kmom03
 
+Efter att ha jobbat igenom kmom03 så bör du kunna:
+
+* mer om klassrelationer i objektorienterad programmering
+  * information hiding
+  * skillnaden mellan komposition & aggregation
+* UML som visar komposition & aggregation i klassdiagram
+* UML som visar hur beteendediagram kan se ut
+* filhantering; att läsa från fil & spara på fil
+* exceptions, några vanliga och hur vi gör egna
+* enkel sortering
