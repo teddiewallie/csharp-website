@@ -33,13 +33,13 @@ C# är baserat på C++ och har samtidigt stora likheter med Java.
 
 ## Kompilerande språk
 
-C# är ett kompilerade språk, vilket innebär att koden du skriver (källkoden) först översätts till maskinkod innan den kan köras (exekveras) på din dator. C#-koden skriver du i en texteditor som till exempel VS Code. För att översätta C#-koden till maskinkod som kan köras på din dator, används en ett program som kallas kompilator. Under kompileringen verifieras dessutom din C#-kod, vilket innebär att kompilatorn kontrollerar att du har rätt syntax, det vill säga att det du skrivit följer språkets regler.
+C# är ett kompilerande språk, vilket innebär att koden du skriver (källkoden) först översätts till maskinkod innan den kan köras (exekveras) på din dator. C#-koden skriver du i en texteditor som till exempel VS Code. För att översätta C#-koden till maskinkod som kan köras på din dator, används en ett program som kallas kompilator. Under kompileringen verifieras dessutom din C#-kod, vilket innebär att kompilatorn kontrollerar att du har rätt syntax, det vill säga att det du skrivit följer språkets regler.
 
 Datorns processor, även kallad CPU (Central Processing Unit) och brukar benämnas datorn hjärna, kan bara köra maskinkod. Maskinkod består av binära instruktioner, 1:or och 0:or, som är specifika för den processor som finns i din dator.
 
 För att kunna köra den kod du skriver i C# behöver den alltså kompileras. Vid kompilering omvandlas koden du skrivit först till CIL-kod (Common Intermediate Language) som är ett mellanliggande objektorienterat högnivå-assemblerspråk. CIL hette för övrigt tidigare MSIL (Microsoft Intermediate Language). CIL-koden görs sedan om till körbar programkod med CLR (Common Language Runtime) som utför en så kallad Just-in-time-kompilering.
 
-Detta görs automatiskt när du kör ditt program i terminalen med .NET-kommandot, *dotnet run*. Om du bara vill kompilera din C#-kod, vilket är lämpligt om du bara vill se om koden följer språkets syntax, använder du istället .NET-kommandot *dotnet build*. Du behöver inte förstå exakt vad som händer när din C#-kod görs om till exekverbar kod men du bör i stora drag känna vad som sker. 
+Detta görs automatiskt när du kör ditt program i terminalen med .NET-kommandot, *dotnet run*. Om du bara vill kompilera din C#-kod, vilket är lämpligt om du bara vill se om koden följer språkets syntax, använder du istället .NET-kommandot *dotnet build*. Du behöver inte förstå exakt vad som händer när din C#-kod görs om till exekverbar kod men du bör i stora drag känna till vad som sker. 
 
 <Figure
     src={csharpKompilering}
@@ -69,7 +69,7 @@ Det viktiga att ta med sig är att det är ett program kallat kompilator som ver
 
 .NET är en plattform för programutveckling som utvecklats av Microsoft. Den finns inte bara på Windows utan även på MacOS och Linux.
 
-.NET en kraftfull plattform som möjliggör effektiv och flexibel programutveckling genom att erbjuda ett brett utbud av verktyg, språk och ramverk som kan anpassas för att möta olika utvecklingsbehov och krav.
+.NET är en kraftfull plattform som möjliggör effektiv och flexibel programutveckling genom att erbjuda ett brett utbud av verktyg, språk och ramverk som kan anpassas för att möta olika utvecklingsbehov och krav.
 
 .NET-plattformen innehåller ett stort kodbibliotek med bland annat databashantering, filhantering, webbtjänster och algoritmer. Här finns också CLR som utför Just-in-time-kompileringen.
 
@@ -78,7 +78,7 @@ Det viktiga att ta med sig är att det är ett program kallat kompilator som ver
 Alla kommandon börjar med *dotnet* och körs i terminalen. Här är några av kommandona som vi säkert kommer att använda:
 
 - **dotnet new**; skapar ett nytt projekt från mallar. Exempel: dotnet new console skapar ett nytt konsolapplikationsprojekt.
-- **dotnet build**; bygger ett .NET-projektet och dess beroenden, med andra ord kompilerar koden.
+- **dotnet build**; bygger ett .NET-projekt och dess beroenden, med andra ord kompilerar koden.
 - **dotnet run**; kompilerar och kör ett .NET-projekt
 - **dotnet clean**; rensar föregående bygge (build)
 - **dotnet test**; kör enhetstester i ett .NET-projekt
@@ -93,7 +93,7 @@ Alla kommandon börjar med *dotnet* och körs i terminalen. Här är några av k
 
 ## Automatisk minneshantering
 
-När du deklarerar variabler så behöver du inte allokera plats i minnet för det sköter C# om automatiskt. Likaså rensas minnet automatiskt då det finnas oanvända objekt som inte kan nås, så kallad automatisk skräpinsamling. Det är denna automatiska skräpinsamling som gör att C# inte lämpar sig för realtidsapplikationer.
+När du deklarerar variabler så behöver du inte allokera plats i minnet för det sköter C# om automatiskt. Likaså rensas minnet automatiskt då det kan finnas oanvända objekt som inte kan nås, så kallad automatisk skräpinsamling. Det är denna automatiska skräpinsamling som gör att C# inte lämpar sig för realtidsapplikationer.
 
 
 ## Andra C#-funktioner

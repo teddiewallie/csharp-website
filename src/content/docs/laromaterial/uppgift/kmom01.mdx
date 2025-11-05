@@ -92,7 +92,7 @@ input: "klar"  output: "Summan=6 och medelvärdet=2"
 
 Luhnalgoritmen används för att verifiera giltigheten hos nummer, särskilt kreditkortsnummer och personnummer.
 
-Algoritmen funkar på så sätt att varannan siffra multipliceras med 2 och varannan med 1, med start på första siffran i personnumret. Om något tal vid multiplikationen blir större än 9 ersätts det talet med dess siffersumma. Därefter summeras alla tal och om summan är jämt delbar med 10 så är kontrollsiffran korrekt. Om personnumret validerar ska metoden returnera `true` annars `false`. Koden ska klara av personnummer med och utan `-` innan de fyra sista siffrorna. Om för får eller för många siffror skickas med ska det bli `false`. Efter anropet av metoden skrivs texten "Valid" ut om personnumret var korrekt och annars skrivs texten "Not Valid" ut.
+Algoritmen funkar på så sätt att varannan siffra multipliceras med 2 och varannan med 1, med start på första siffran i personnumret. Om något tal vid multiplikationen blir större än 9 ersätts det talet med dess siffersumma. Därefter summeras alla tal och om summan är jämt delbar med 10 så är kontrollsiffran korrekt. Om personnumret validerar ska metoden returnera `true` annars `false`. Koden ska klara av personnummer med och utan `-` innan de fyra sista siffrorna. Om för får eller för många siffror skickas med ska det bli `false`. Efter anropet av metoden skrivs texten "Valid" ut om personnumret var korrekt och annars skrivs texten "Not valid" ut.
 
 ```text
    8  1 1 2 1 8 9  8 7  6
