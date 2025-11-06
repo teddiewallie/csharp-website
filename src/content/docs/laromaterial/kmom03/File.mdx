@@ -3,11 +3,12 @@ title: "Filer"
 description: Läsa från och skriva till filer
 sidebar:
     order: 3
+    hidden: true
 ---
 
 import Figure from '@components/CustomFigure.astro';
 
-import filer from '@assets/img/kmom03/filer.png';
+import filer from '@assets/img/kmom03/filer.jpg';
 import shoppingList from '@assets/img/kmom03/shoppingList.png';
 
 Data sparas i datorns minne under tiden programmet är exekveras och försvinner när programmet avslutas. För att programmet ska komma i samma läge igen, måste samma data matas in igen. För att undvika det kan vi spara undan denna data på en fil. När programmet startar så läser det in data från filen och vi kommer direkt till samma läge utan inmatningar. Nu kan vi fortsätta med inmatningar om vi vill och innan programmet avslutas så sparar vi ner data på fil. De vanligaste I/O-operationerna (Input/Output) är att läsa från en fil och att skriva till en fil.
@@ -16,8 +17,8 @@ Tänk ett program som hanterar en shoppinglista med möjlighet att mata in produ
 
 <Figure
     src={filer}
-    caption="Bilden visar kataloger och filer i en dator"."
-    width="600px"
+    caption="Bilden visar kataloger och filer i en dator"
+    width="500px"
 />
 
 ## Filer i **C#**
@@ -36,7 +37,7 @@ Vi ska skriva till fil och läsa från fil med hjälp av den inbyggda klassen **
 <Figure
     src={shoppingList}
     caption="Bilden visar en shoppinglista."
-    width="600px"
+    width="500px"
 />
 
 
@@ -246,7 +247,7 @@ Bra, då kan vi läsa från fil!
 Då testar vi vår klass genom att fylla i huvudprogrammet. Vi börjar med att skapa ett objekt av klassen vi skapade med filnamnet "simpleList.txt". Vi presenterar shoppinglistan i början och slutet av programmet. Inmatningen av varor sker i en loop som avslutas om vi trycker "ENTER" (enter/retur-tangenten) eftersom det då resulterar i en tom sträng (""). Vi gör en inmatning för produkten och en inmatning för antalet produkter.
 
 Vi har initierat "quantity" med `string.Empty` som är en statisk egenskap som representerar en tom sträng (egentligen samma som ""). Vi har initierat "product" med "". Båda dessa varianter är alltså möjliga.
-<!-->
+
 Det betyder att vi visar kompilatorn att vi har koll på att referenstypen string kan vara "null". Variabeln "product" kan ha en sträng men den kan också vara null. Det är vanligt att göra så vid inmatningar för att visa att variabeln kan bli "null".
 Läs mer om referenstyper som kan vara "null" i [Nullable reference types (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types). Även värdetyper som int, double, bool och char kan vara "nullable" och det kan du läsa mer om i [Nullable value types (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types). -->
 

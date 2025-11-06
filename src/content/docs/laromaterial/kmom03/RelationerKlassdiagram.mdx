@@ -3,12 +3,15 @@ title: "Mer om klassdiagram"
 description: Mer om klassdiagram
 sidebar:
     order: 1
+    hidden: true
 ---
 
 import Figure from '@components/CustomFigure.astro';
 
 import relationer from '@assets/img/kmom03/relationer.png';
 import classdiagramBankWithRelations from '@assets/img/kmom03/classdiagramBankWithRelations.png';
+import allRelations from '@assets/img/kmom03/allRelations.png';
+
 
 UML (Unified Modeling Language) är ett visuellt modelleringsspråk för att beskriva, visualisera, specificera och dokumentera olika delar av system och programvara. Syftet med UML är underlätta kommunikation, förståelse och design av komplexa system och programvara mellan utvecklare, kunder och andra intressenter.
 
@@ -58,7 +61,7 @@ Det finns flera typer av relationer som används i UML för att beskriva beroend
 <Figure
     src={relationer}
     caption="Bilden visar olika typer av relationer, där association är mest generell och komposition den starkaste relationen."
-    width="400px"
+    width="600px"
 />
 
 ### Komposition
@@ -87,11 +90,12 @@ Association symboliseras av en enkel pil som visar riktningen eller en enkel pil
 
 ### Sammanställning av symboler
 
-| Relation | Symbol  | Symbol i PlantUML |
-|----------|---------|-------------------|
-| Komposition | ![Komposition](./../../../images/kmom03/composition.png "Komposition")  |      *--        |
-| Aggregation | ![Aggregation](./../../../images/kmom03/aggregation.png "Aggregation")  |      o--        |
-| Association | ![Association](./../../../images/kmom03/association.png "Association")  |      -->        |
+<Figure
+    src={allRelations}
+    caption="Bilden visar symboler för aggregation, komposition och association."
+    width="500px"
+/>
+
 
 ## Bankexemplet
 
@@ -118,11 +122,9 @@ Här har vi bankexemplet med riktiga symboler och kardinalitet.
 - **Bank** har en eller flera **Employees**
 - **Bank** har noll eller flera **Customer**
 
-![Bank med relationer och kardinalitet](./../../../images/kmom03/classdiagramBankWithRelations.png "")
-
 <Figure
-    src={classdiagramBankWithRelations.png}
-    caption="Bilden visar banken med relationer och kardinalitet."
+    src={classdiagramBankWithRelations}
+    caption="Bilden visar banken med dess relationer och kardinalitet."
 />
 
 ## Avslutningsvis
