@@ -1,0 +1,204 @@
+---
+title: "Kmom02: Tärningsspelet Dice100"
+description: Tärningsspelet Dice100
+sidebar:
+    order: 0020
+    hidden: true
+---
+
+import Figure from '@components/CustomFigure.astro';
+import { YouTube } from 'astro-embed';
+
+import classdiagramDie from '@assets/img/kmom02/classdiagramDie.png';
+import classdiagramRound from '@assets/img/kmom02/classdiagramRound.png';
+
+Tärningsspelet **Dice100** är ett enkelt men roligt, tärningsspel. Det gäller att samla ihop poäng för att komma först till **100** genom att kasta tärningar. I varje omgång kastar en spelare i taget tärningar tills spelaren väljer att stanna och spara poängen eller tills det dyker upp en 1:a eftersom spelaren då förlorar alla poäng som samlats in i rundan. Antalet rundor räknas upp oavsett om spelaren väljer att spara rundan eller får en etta.
+
+I denna uppgiften får du möjlighet att bygga klasser för att representera en tärning, en spelrunda och själva spelet. Du får också bygga en klass för menyn.
+
+
+## Förkunskaper
+
+Du bör ha gjort, eller ha förkunskaper som motsvarar:
+
+- guiden "Kom igång med objektorienterad programmering i C#" [Intro till OOP guiden](./../../../OoGuide/intro/README.md)
+- guiden "Kom igång med objektorienterad programmering i C#" [Kapitel 1 - Objekt och Klasser](./../../../OoGuide/kap1/README.md)
+- artikeln [Introduktion till UML och klassdiagram](./../Kunskap/UmlKlassdiagram.md).
+
+## Introduktion
+
+Spelet ska fungera enligt beskrivningen ovan. En rekommendation är att börja med menyalternativet som ska skriva ut reglerna. Projektet som du skapar ska heta **Die100**  och det skapar du i kmom02. Det kallas också [Pig game](https://en.wikipedia.org/wiki/Pig_(dice_game)).
+
+Dina klasser ska motsvara beskrivningar och klassdiagram som du hitter lite längre ner på sidan. Det som finns i beskrivningar och klassdiagram **måste** finnas, du får och är **rekommenderad** att skapa ytterligare metoder och attribut som är motiverade.
+
+**Tips:** Under utvecklingen av programmet kan du gärna använda huvudprogrammet för att testa så att varje klass fungerar som du tänkt.  
+
+### Die
+
+Klassen **Die** innehåller information och funktionalitet för en tärning. Klassen **Die** representerar **en** tärning och därför är namngivningen "Die, det vill säga singularis för tärning på engelska. 
+
+*Anm: Flera tärningar är "dice" på engelska men i modern engelska kan du använda "dice" för både en och flera tärningar.*
+
+#### Klassdiagram Die
+
+<Figure
+    src={classdiagramDie}
+    caption="Klassdiagram Die"
+    width="300px"
+/>
+
+Klassen **Die** innehåller:
+
+- **MAX_VALUE** en privat konstant som anger den högsta möjliga värdet för tärningen, i detta fall 6.
+- **MIN_VALUE** en privat konstant som anger den lägsta möjliga värdet för tärningen, i detta fall 1.
+- **_value** en privat medlemsvariabel som lagrar det aktuella värdet för tärningen.
+- **_dieRandom** är ett klassattribut som är privat och håller en instans (ett objekt) av klassen *Random*. Det används för att generera slumptal.
+- **Die()** en publik konstruktor som instansierar ett Die-objekt.
+- **Die(value)** en publik konstruktor med en int som inparameter som instansierar ett Die-objekt och ger den värdet av inparametern. Här ska konstanterna MAX_VALUE och MIN_VALUE användas för att kontrollera och hantera att det bara kan bli tärningar som har värden mellan 1 och 6. Om man försöker skapa en tärning genom Die(10) så ska det bli en tärning med värdet MAX_VALUE. På samma sätt ska MIN_VALUE användas om någon försöker använda ett värde mindre än MIN_VALUE.
+- **GetValue()** en publik metod som returnerar det aktuella värdet för tärningen.
+- **GetString()** en publik metod som returnerar tärningens värde som en sträng.
+- **Roll()** en publik metod som slår tärningen vilket hanteras genom att **value** får ett nytt slumptal.
+
+### Round
+
+Klassen **Round** innehåller information och funktionalitet för en runda i spelet.
+
+#### Klassdiagram Round
+
+<Figure
+    src={classdiagramRound}
+    caption="Klassdiagram Round"
+    width="300px"
+/>
+
+Klassen **Round** innehåller:
+
+- **NO_OF_DICE** en privat konstant som anger antalet tärningar som används i rundan, i detta fall 5.
+- **_hand** en privat lista av Die-objekt som representerar rundans tärningar.
+- **_points** en privat variabel som lagrar rundans poäng.
+- **Round()** en publik konstruktor som instansierar ett Round-objekt och initierar instansvariablerna. Poängen bör sättas till 0 och en lista med tomma tärningsobjekt bör skapas. Listan ska vara lika lång som antalet tärningar i rundan.
+- **Round(values)** en publik konstruktor som instansierar ett Round-objekt där tärningarna tilldelas värden från inparametern values. Dessutom uppdateras rundans poäng till summan av de inskickade värdena.
+- **GetPoints()** en publik metod som returnerar rundans poäng.
+- **ClearPoints()** en publik metod som sätter nollställer rundans poäng.
+- **UpdatePoints()** en privat metod som uppdaterar poängen (_points) baserat på tärningarnas värden. Men om tärningarna innehåller en 1:a så ska poängen (_points) bli 0.
+- **Roll()** en publik metod som rullar tärningarna och uppdaterar poängen (UpdatePoints).
+- **Roll(indexes)** en publik metod som endast rullar tärningarna som inparameters indexes pekar ut och uppdaterar poängen (UpdatePoints).
+- **HandToList()** en publik metod som returnerar en lista av tärningarnas värden.
+- **PrintRound()** en publik metod som skriver ut tärningarna i handen.
+
+### Game
+
+Klassen **Game** innehåller information och funktionalitet för spelet. Menyn (se nedan) har ett objekt av klassen Game och anropar lämpliga metoder för Game-objektet för respektive meny-alternativ. Börja med att göra en metod i Game-klassen som skriver ut spelets regler och anropa den i menyalternativet för "Skriv ut reglerna". Därefter utökar du med metoder efter hand baserat på de meny-alternativ som finns. 
+
+Klassen **Game** behöver att objekt av klassen Round. Funderar vilka ytterligare egenskaper klassen Game har behov av. Ett tips är att titta på reglerna. 
+
+Klassdiagram till klassen Game skapar ni själva i uppgiften nedan.
+
+### Menu
+
+Programmet styrs via en meny, som ska innehålla alternativen:
+
+- Slå tärningarna
+- Spara rundan och lägg till totalpoängen
+- Nollställ spelet
+- Skriv ut reglerna
+- Avsluta
+
+Menyklassen ska innehålla ett objekt av klassen Game.
+
+### Huvudprogrammet
+
+Huvudprogrammet, `Program.cs`, ska endast skapa ett objekt av Meny-klassen och via anrop av en instansmetod "starta menyn".
+
+## Krav
+
+1. Gör så att en spelare kan spela tärningsspelet **Dice100** med ett terminalprogram.
+
+2. Skapa ett nytt projekt som heter **Dice100**.
+
+3. Skapa dina klasser under src i ditt projekt **Dice100** precis som du gjorde i övningen.
+
+4. Skapa klassen för tärningen **Die**. Gör `dotnet build` och rätta eventuella kompileringsfel.
+
+5. Skapa klassen för spelrunda **Round**. Gör `dotnet build` och rätta eventuella kompileringsfel.
+
+6. För att testa att grunden är enligt kraven ovan, så kan du kopiera testprojektet för **Die** och **Round** [Dice100.Tests](./../../../CodeExamples/kmom02/uppgift/Dice100.Tests) under samma katalog som din Dice100 ligger. Se mer information under kapitlet [Tester](#tester) nedan.
+
+7. Skapa klassen för **Menu**. Gör gärna utskrifter efter varje menyalternativ. När du väljer "Slå tärningarna" så vill du visa tärningarna (PrintRound) och kanske mer information som poäng för den aktuella rundan, total poäng och antalet rundor. Det är bra att visa information om spelet efter varje menyval.
+När du börjar utveckla så kanske du bara skriver ut vilket menyalternativ du valt och sen utökar du informationen. Efter som Game klassen inte är utvecklad ännu gör du en kommentar under menyval "Slå tärningarna" att du ska anropa motsvarande metod i Game. Gör likadant med menyvalen "Spara rundan och lägg till totalpoängen" och "Nollställ spelet".
+
+8. Skapa ett klassdiagram (UML) för din klass **Game**. Välj beskrivande metodnamn.
+
+9. För att reda ut vad som händer i klassen **Game** ritar du ett flödesdiagram. Vid spelets start - vad händer då? Jo, tärningarna slås och visas upp tillsammans med poängsumman. Vad händer efter det? Vad väljer användaren då? Och vad händer om det blir en 1:a?
+
+10. Skapa klassen **Game**. Det är lite olika tillstånd i spelet som du behöver att tänka på. Hur ser objektet ut från början? Vad händer efter första kastet i runda 1? Vad händer när man sparar och påbörjar en ny runda? Hur får man reda på att spelet är klart, när spelaren når 100 poäng? Hur nollställs spelet?
+**Tips:** Testa gärna med 2-3 tärningar i rundan för att minska sannolikheten för att få en 1:a under utveckling och minska dessutom målpoängen (som i det färdiga spelet är 100). Du kan till exempel välja 2 tärningar och 30 som målpoäng.
+
+11. Testkör ditt spel och kontrollera att menyalternativen fungera såsom avsett och att poäng och antalet rundor uppdateras som de ska.
+
+## Demo på Dice100
+
+Så här kan det se ut när det är klart.
+
+Så här kan det se ut när det är klart.
+
+<YouTube
+    id="??"
+    title="Tärningsspelet Dice100 del 2 kan se ut."
+/>
+
+
+## Extrauppgift
+
+Gör så att flera spelare kan spela mot varandra.
+
+## Tester
+
+Du har testa din kod genom att köra igenom ditt menyprogram och kontrollerat att det fungerar såsom avsett. Du har kollat att testprojektet från uppgiften ovan går igenom - då fungerar **Die** och **Round** som de ska.
+Du hämtar enhetstesterna så här:
+
+```bash
+task download-tests -- kmom03
+```
+
+Då ser det ut så här:
+
+```shell
+pwd // stå i me/kmom02
+tree -L 2
+.
+├── Dice100
+│   ├── Dice100.csproj
+│   ├── Program.cs
+│   ├── src
+│   ├── bin
+│   └── obj
+├── Dice100.Tests
+│   ├── Dice100.Tests.csproj
+│   ├── DieTest.cs
+│   ├── RoundTest.cs
+│   └── Usings.cs
+```
+
+Titta i filen Dice100.Tests.csproj och se om den pekar ut rätt klasser att testa, vilket den gör genom att referera till projektfilen "Dice100.csproj". Kör testerna:
+
+```shell
+pwd // stå i me/kmom02/Dice100.Tests
+dotnet test
+dotnet test --logger "console;verbosity=normal" // mer information
+```
+
+Då får vi hoppas att alla tester går igenom! Lycka till!
+
+## Inlämning
+
+Ta bort debugutskrifter och kontrollera att tärningar och målpoäng stämmer med kraven.  
+Lämna in klassdiagrammet på **Game** och lämna in flödesdiagrammet. Det går bra att göra flödesdiagrammet på papper, fotografera av det och lämna in.
+
+## Tips från coachen
+
+Felsöka med hjälp av utskrifter med `Console.WriteLine()`. Använd gärna debugger i VS Code.
+
+Glöm inte att använda 'dotnet format' för att formatera din kod.
+
+Lycka till och hojta till i forumet om du behöver hjälp!
